@@ -23,17 +23,16 @@ function BotsPage() {
 
 
   function addBotToSelected(event){
-    //let selectedBot = event.target.id;
+    let selectedBot = event.target.id;
     alert(event.target.id)
+    setSelectedBots([...selectedBots,selectedBot])
   }
 
- 
-  
   return (
     <div>
       <h3>BotsPage</h3>
-      <YourBotArmy />
-      <BotCollection botArray={botArray} addBotToSelected={addBotToSelected} />
+      <YourBotArmy selectedBots={selectedBots} />
+      <BotCollection botArray={botArray} selectedBots={selectedBots}  addBotToSelected={addBotToSelected} />
     </div>
   )
 }

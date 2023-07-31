@@ -1,21 +1,33 @@
 import React from "react";
 import { useState } from "react";
 
-function BotCollection({botArray,addBotToSelected}) {
+function BotCollection({botArray,addBotToSelected,selectedBots }) {
+
+  const cardStyle ={
+    width: "18rem"
+  }
+
+  const cardPictureStyle ={
+    width:'250px',
+    height: '250px'
+  }
 
      
    const botArrayDisplay = botArray.map((bot)=>{
-    return <div   onClick={addBotToSelected} key={bot.key} className="card">
-      <img id={bot.id} className="card-img-top" src={bot.avatar_url}></img>
-      <div className="card-body">
-        <h5 className="card-title">{bot.name}</h5>
+    return <div className="card" style={cardStyle} onClick={addBotToSelected} key={bot.key} >
+      <img id={bot.id} className="card-img-top" style={cardPictureStyle} src={bot.avatar_url}></img>
+      <div id={bot.id} className="card-body">
+        <h5 id={bot.id} className="card-header">{bot.name}</h5>
         <img></img>
-        <p className="card-text">{bot.catchphrase}</p>
+        <p id={bot.id} className="card-text">{bot.catchphrase}</p>
+      </div>
+      <div className="card-footer">
+        <p>{bot.health}</p>  
       </div>    
     </div>
   })
 
-  //console.log(botArray)
+  console.log(selectedBots)
 
   return (
     <div className="ui four column grid">
