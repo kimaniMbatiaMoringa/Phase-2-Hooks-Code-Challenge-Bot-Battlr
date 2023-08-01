@@ -24,7 +24,7 @@ function BotsPage() {
 
   function addBotToSelected(event){
     let selectedBot = event.target.id;
-    alert(event.target.id)
+    //alert(event.target.id)
     setSelectedBots([...selectedBots,selectedBot])
   }
 
