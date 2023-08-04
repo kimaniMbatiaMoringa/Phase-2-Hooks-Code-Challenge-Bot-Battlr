@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function YourBotArmy({ selectedBots }) {
+function YourBotArmy({ selectedBots, removeFromSelection }) {
   //your bot army code here...
   const [botFullDetails, setBotFullDetails] = useState([])
 
@@ -12,6 +12,8 @@ function YourBotArmy({ selectedBots }) {
     ))
   }, [selectedBots])
 
+
+
   const cardStyle ={
     width: "18rem"
   }
@@ -22,7 +24,7 @@ function YourBotArmy({ selectedBots }) {
   }
 
   const printSelectedBots = botFullDetails.map((bot) => (
-    <div className="card" style={cardStyle}>
+    <div className="card" style={cardStyle} onClick={removeFromSelection}>
       <img id={bot.id} src={bot.avatar_url} style={cardPictureStyle}></img>
       <h3 key={bot.id}>{bot.name}</h3>
     </div>

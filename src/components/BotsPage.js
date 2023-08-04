@@ -24,14 +24,34 @@ function BotsPage() {
 
   function addBotToSelected(event){
     let selectedBot = event.target.id;
-    //alert(event.target.id)
-    setSelectedBots([...selectedBots,selectedBot])
+/*       let checker =selectedBots.filter(item => {
+        if (item.id.includes(selectedBot)){
+          return true
+        }
+        else{
+          return false
+        }
+        
+      })
+      alert(checker) */
+      setSelectedBots([...selectedBots,selectedBot])
+   
+  }
+
+  function removeFromSelection(event){
+    let selectedBot = event.target.id;
+    alert(selectedBot)
+    let amendedSelection = selectedBots.filter((item)=> item !== selectedBot)
+    setSelectedBots(amendedSelection)
   }
 
   return (
     <div>
       <h3>BotsPage</h3>
-      <YourBotArmy selectedBots={selectedBots} />
+      <div>{selectedBots.map((bot) => (<p>
+        {bot}
+      </p>))}</div>
+      <YourBotArmy selectedBots={selectedBots} removeFromSelection={removeFromSelection} />
       <BotCollection botArray={botArray} selectedBots={selectedBots}  addBotToSelected={addBotToSelected} />
     </div>
   )
