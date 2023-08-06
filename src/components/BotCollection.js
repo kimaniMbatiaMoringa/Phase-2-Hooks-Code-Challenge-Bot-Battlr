@@ -15,7 +15,7 @@ function BotCollection({botArray,addBotToSelected,selectedBots }) {
      
    const botArrayDisplay = botArray.map((bot)=>{
     return <div className="card" style={cardStyle} onClick={addBotToSelected} key={bot.key} >
-      <img id={bot.id} className="card-img-top" style={cardPictureStyle} src={bot.avatar_url}></img>
+      <img name={bot.name} className="card-img-top" style={cardPictureStyle} src={bot.avatar_url}></img>
       <div id={bot.id} className="card-body">
         <h5 id={bot.id} className="card-header">{bot.name}</h5>
         <img></img>
@@ -26,8 +26,6 @@ function BotCollection({botArray,addBotToSelected,selectedBots }) {
       </div>    
     </div>
   })
-
-  console.log(selectedBots)
 
   return (
     <div className="ui four column grid">

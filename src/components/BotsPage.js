@@ -23,34 +23,33 @@ function BotsPage() {
 
 
   function addBotToSelected(event){
-    let selectedBot = event.target.id;
-/*       let checker =selectedBots.filter(item => {
-        if (item.id.includes(selectedBot)){
-          return true
-        }
-        else{
-          return false
-        }
-        
-      })
-      alert(checker) */
-      setSelectedBots([...selectedBots,selectedBot])
-   
+    const selectedBotId = event.target.name;
+    //alert(selectedBotId)
+    //if(typeof selectedBotId == 'string'){alert('Its a String')}
+    //const result = Array.isArray(botArray)
+    //alert(result)
+    const returnedBot = botArray.find((bot)=> bot.name.includes(selectedBotId))
+    setSelectedBots([...selectedBots,returnedBot])
   }
 
   function removeFromSelection(event){
-    let selectedBot = event.target.id;
-    alert(selectedBot)
-    let amendedSelection = selectedBots.filter((item)=> item !== selectedBot)
+    let selectedBot = String(event.target.id)
+    //alert(selectedBot)
+    let amendedSelection = selectedBots.filter((item)=> item.id != selectedBot)
     setSelectedBots(amendedSelection)
+  }
+
+  function removefromBotArray(event){
+    let selectedBot = String(event.target.id);
+    
   }
 
   return (
     <div>
       <h3>BotsPage</h3>
-      <div>{selectedBots.map((bot) => (<p>
+{/*       <div>{selectedBots.map((bot) => (<p>
         {bot}
-      </p>))}</div>
+      </p>))}</div> */}
       <YourBotArmy selectedBots={selectedBots} removeFromSelection={removeFromSelection} />
       <BotCollection botArray={botArray} selectedBots={selectedBots}  addBotToSelected={addBotToSelected} />
     </div>
